@@ -75,7 +75,8 @@ class newModel:
             # create another group to store metadata objects. (drawings, BOM spreadsheets, etc.)
             self.activeDoc.addObject('App::DocumentObjectGroup','Metadata')
             # create an object Variables to hold variables to be used in this document
-            variables = model.newObject('App::FeaturePython','Variables')
+            model.addObject(Asm4.createVariables())
+            #variables = model.newObject('App::FeaturePython','Variables')
             #variables.ViewObject.Proxy = Asm4.setCustomIcon(variables,'Asm4_Variables.svg')
 
             # create a Configuration property
