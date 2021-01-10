@@ -72,14 +72,18 @@ class newModel:
             lcs0.MapReversed = False
             # create a group Constraints to store future solver constraints there
             model.newObject('App::DocumentObjectGroup','Constraints')
+            # create another group to store metadata objects. (drawings, BOM spreadsheets, etc.)
+            self.activeDoc.addObject('App::DocumentObjectGroup','Metadata')
             # create an object Variables to hold variables to be used in this document
-            model.addObject(Asm4.createVariables())
-            # variables = model.newObject('App::FeaturePython','Variables')
+            variables = model.newObject('App::FeaturePython','Variables')
             #variables.ViewObject.Proxy = Asm4.setCustomIcon(variables,'Asm4_Variables.svg')
 
             # create a Configuration property
             model.addProperty('App::PropertyEnumeration', 'Configuration', 'Parameters')
             model.Configuration = ['Default']
+            # create the list of metadata fields that must be assigned to parts in this model
+            model.addProperty('App::StringList', 'RequiredPartMetadata', 'Parameters')
+            model.RequiredPartMetadata = Asm4.partInfo
             # move existing parts at the document root to the Parts group
             # not nested inside other parts, to keep hierarchy
             for obj in self.activeDoc.Objects:

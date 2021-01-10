@@ -31,7 +31,6 @@ asm4wb_icons_path = os.path.join( asm4wbPath, 'Resources/icons')
 global main_Assembly4WB_Icon
 main_Assembly4WB_Icon = os.path.join( asm4wb_icons_path , 'Assembly4.svg' )
 
-# I don't like this being here
 import treeSelectionOverride as selectionOverride
 
 
@@ -55,12 +54,10 @@ class Assembly4Workbench(Workbench):
     def Activated(self):
         "This function is executed when the workbench is activated"
         #selectionOverride.Activate()   # Will start with selection override disabled by default
-        FreeCAD.Console.PrintMessage("Activating Assembly4 WorkBench\n")
         return
 
     def Deactivated(self):
         "This function is executed when the workbench is deactivated"
-        FreeCAD.Console.PrintMessage("Leaving Assembly4 WorkBench\n")
         selectionOverride.Disable()
         return 
 
@@ -68,8 +65,8 @@ class Assembly4Workbench(Workbench):
         # this function is mandatory if this is a full python workbench
         return "Gui::PythonWorkbench"
 
+
     def Initialize(self):
-        FreeCAD.Console.PrintMessage("Assembly4 WorkBench initializing ... ")
         import newModelCmd         # creates a new App::Part container called 'Model'
         import newDatumCmd         # creates a new LCS in 'Model'
         import newPartCmd          # creates a new App::Part container called 'Model'
@@ -90,8 +87,9 @@ class Assembly4Workbench(Workbench):
         import HelpCmd             # shows a basic help window
         import showHideLcsCmd      # shows/hides all the LCSs
         import configurationEngine  # save/restore configuration
+        import makeDrawingCmd       # makes a TechDraw drawing of the Model
+        import makeBomSheetCmd      # an additional BOM maker implementation
         #import DraftTools
-        #import treeSelectionOverride as selectionOverride
 
         # check whether the Fasteners workbench is installed
         if self.checkWorkbench('FastenersWorkbench'):
@@ -132,13 +130,14 @@ class Assembly4Workbench(Workbench):
                                 "Separator",
                                 "Asm4_placeLink", 
                                 "Asm4_placeFastener", 
-                                "Asm4_cloneFastenersToAxes", 
                                 "Asm4_placeDatum", 
                                 "Asm4_releaseAttachment", 
                                 #"Asm4_makeLinkArray",
                                 "Separator",
                                 "Asm4_infoPart", 
-                                "Asm4_makeBOM", 
+                                "Asm4_makeBOM",
+                                "Asm4_makeBOMSheet", 
+                                'Asm4_makeDWG',
                                 "Asm4_Measure", 
                                 'Asm4_showLcs',
                                 'Asm4_hideLcs',
@@ -160,21 +159,19 @@ class Assembly4Workbench(Workbench):
                                 "Separator",
                                 "Asm4_placeLink", 
                                 'Asm4_placeFastener',
-                                #'Asm4_cloneFastenersToAxes',
                                 "Asm4_placeDatum", 
                                 "Separator",
                                 #"Asm4_makeLinkArray",
                                 #"Draft_PolarArray",
                                 "Asm4_treeSelectionOverrideCmd",
                                 "Asm4_makeBOM", 
+                                "Asm4_makeBOMSheet",
+                                'Asm4_makeDWG',
                                 "Asm4_Measure", 
                                 "Asm4_variablesCmd",
                                 "Asm4_Animate",
                                 "Asm4_updateAssembly"]
         self.appendToolbar("Assembly",itemsAssemblyToolbar)
-
-        # Initialisation finished 
-        FreeCAD.Console.PrintMessage("done.\n")
 
 
     """
@@ -195,7 +192,6 @@ class Assembly4Workbench(Workbench):
                         "Asm4_placeDatum"    ,
                         'Asm4_FSparameters'  ,
                         'Asm4_placeFastener' ,
-                        'Asm4_cloneFastenersToAxes' ,
                         'Separator'          ,
                         'Asm4_saveConfiguration',
                         'Asm4_restoreConfiguration']
