@@ -95,4 +95,4 @@ class makeBOMSheet:
     Gui.Selection.addSelection(App.ActiveDocument.Label,theSheet.Label)
     return
     
-Gui.addCommand( 'Asm4_makeBOMSheet', makeBOMSheet() )
+Gui.addCommand( 'Asm4_makeBOMSheet', makeBOMSheet())

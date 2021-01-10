@@ -140,25 +140,4 @@ class makeDWG:
         # show the user the dwg by selecting it
         Gui.Selection.addSelection(App.ActiveDocument.Label,drawpage.Label)
 
-Gui.addCommand( 'Asm4_makeDWG', makeDWG() )
-
-# notes
-'''
-
-A4_LandscapeTD.svg
-{'Designed_by_Name': 'Designed by Name', 'Drawing_number': 'Drawing number', 'FC-Date': 'Date', 
-'FC-SC': 'Scale', 'FC-SH': 'Sheet', 'FC-Title': 'Title', 'Subtitle': 'Subtitle', 'Weight': 'Weight'}
-
-A4_Landscape_ISO7200TD.svg
-{'AUTHOR_NAME': 'AUTHOR NAME', 'DN': 'DN', 'DRAWING_TITLE': 'DRAWING TITLE', 'FC-DATE': 'DD/MM/YYYY',
- 'FC-REV': 'REV A', 'FC-SC': 'SCALE', 'FC-SH': 'X / Y', 'FC-SI': 'A4', 'FreeCAD_DRAWING': 'FreeCAD DRAWING',
-  'PN': 'PN', 'SI-1': '', 'SI-3': ''}
-
-A4_Landscape_ISO7200_Pep.svg
-{'APPROVER_NAME': 'APPROVER NAME', 'AUTHOR_NAME': 'AUTHOR NAME', 'DATE': 'YYYY-MM-DD',
- 'DN': 'DN', 'DOCUMENT_TYPE': '', 'OWNER_NAME': 'OWNER NAME', 'PM': 'PM', 'PN': 'PN',
-  'REVISION': 'REV A', 'RIGHTS': "(R) DO NOT DUPLICATE THIS DRAWING TO THIRD PARTIES WITHOUT OWNER'S PERMISSION !",
-   'SCALE': 'M x:x', 'SHEET': '99 of 99', 'SIZE': 'A4', 'TITLELINE-1': 'FreeCAD', 'TITLELINE-2': ''
-   , 'TITLELINE-3': '', 'TOLERANCE': '+/- ?'}
-
-'''
+Gui.addCommand( 'Asm4_makeDWG', makeDWG())
