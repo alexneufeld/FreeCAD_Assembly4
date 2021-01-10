@@ -13,7 +13,7 @@ import re
 from PySide import QtGui, QtCore
 import FreeCADGui as Gui
 import FreeCAD as App
-#from FreeCAD import Console as FCC
+from FreeCAD import Console as FCC
 
 
 import libAsm4 as Asm4
@@ -161,7 +161,6 @@ class infoPartUI():
         self.buttonsLayout = QtGui.QHBoxLayout()
         self.AddNew = QtGui.QPushButton('Add New Info')
         self.Delete = QtGui.QPushButton('Delete Selected')
-        QtGui.QPushButton()
         self.buttonsLayout.addWidget(self.AddNew)
         self.AddNew.clicked.connect(self.newProp)
         self.buttonsLayout.addStretch()
