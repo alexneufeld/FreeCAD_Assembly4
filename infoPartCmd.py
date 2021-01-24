@@ -107,7 +107,7 @@ class infoPartUI():
         # the model object. I don't know if this is the best possible solution.
         # They could also eg: be set using global ASM4 preferences 
         for info in self.reqPartInfo:
-            if not hasattr(self.part,info):
+            if (not hasattr(self.part,info)) and (info != ""):
                 self.part.addProperty( 'App::PropertyString', info, 'PartInfo' )
         return
 
