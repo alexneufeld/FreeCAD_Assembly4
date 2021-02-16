@@ -87,11 +87,9 @@ class Assembly4Workbench(Workbench):
         #import makeLinkArray        # creates a new array of App::Link
         import gotoDocumentCmd     # opens the documentof the selected App::Link
         import Asm4_Measure        # Measure tool in the Task panel
-        import makeBomCmd          # creates the parts list
         import HelpCmd             # shows a basic help window
         import showHideLcsCmd      # shows/hides all the LCSs
         import configurationEngine  # save/restore configuration
-        import makeDrawingCmd       # makes a TechDraw drawing of the Model
         import makeBomSheetCmd      # an additional BOM maker implementation
         #import DraftTools
         #import treeSelectionOverride as selectionOverride
@@ -141,9 +139,7 @@ class Assembly4Workbench(Workbench):
                                 #"Asm4_makeLinkArray",
                                 "Separator",
                                 "Asm4_infoPart", 
-                                "Asm4_makeBOM",
                                 "Asm4_makeBOMSheet", 
-                                'Asm4_makeDWG',
                                 "Asm4_Measure", 
                                 'Asm4_showLcs',
                                 'Asm4_hideLcs',
@@ -171,9 +167,7 @@ class Assembly4Workbench(Workbench):
                                 #"Asm4_makeLinkArray",
                                 #"Draft_PolarArray",
                                 "Asm4_treeSelectionOverrideCmd",
-                                "Asm4_makeBOM", 
                                 "Asm4_makeBOMSheet",
-                                'Asm4_makeDWG',
                                 "Asm4_Measure", 
                                 "Asm4_variablesCmd",
                                 "Asm4_Animate",

@@ -83,7 +83,7 @@ class newModel:
             model.addProperty('App::PropertyEnumeration', 'Configuration', 'Parameters')
             model.Configuration = ['Default']
             # create the list of metadata fields that must be assigned to parts in this model
-            model.addProperty('App::StringList', 'RequiredPartMetadata', 'Parameters')
+            model.addProperty('App::PropertyStringList', 'RequiredPartMetadata', 'Parameters')
             model.RequiredPartMetadata = Asm4.partInfo
             # move existing parts at the document root to the Parts group
             # not nested inside other parts, to keep hierarchy
